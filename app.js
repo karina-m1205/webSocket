@@ -36,7 +36,8 @@ server.on("connection", (client) => {
 
                 parsedMsg.target.forEach(target => {
                     if (target in all_clients === false) {
-                        client.send(new TargetLoginError(target));
+                        const err = new TargetLoginError(target);
+                        client.send(err.message);
                     } else {
                         all_clients[target].send(JSON.stringify({
                             message: parsedMsg.namak,
