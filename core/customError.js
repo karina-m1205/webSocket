@@ -1,4 +1,4 @@
-class IsJson extends Error {
+class IsNotJson extends Error {
     constructor() {
         super("is not valid JSON!");
     };
@@ -30,7 +30,7 @@ class UsernameValidationError extends Error{
 
 module.exports = {
     LoginError,
-    IsJson,
+    IsNotJson,
     EmptyMessage,
     TargetLoginError,
     UsernameValidationError,
