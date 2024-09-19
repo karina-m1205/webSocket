@@ -69,6 +69,6 @@ server.on("connection", (client) => {
 //for message:
 // {
 //     "sender": "anna",
-//     "target": "karina",
+//     "target": ["karina"],
 //     "namak": "hello Karina",
 // }
