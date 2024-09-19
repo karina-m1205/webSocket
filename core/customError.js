@@ -17,8 +17,8 @@ class EmptyMessage extends Error {
 };
 
 class TargetLoginError extends Error {
-    constructor() {
-        super(" target is not login");
+    constructor(target) {
+        super(`${target} is not login`);
     };
 };
 
