@@ -36,26 +36,14 @@ server.on("connection", (client) => {
 
                 parsedMsg.target.forEach(target => {
                     if (target in all_clients === false) {
-                        throw new TargetLoginError(target);
+                        client.send(new TargetLoginError(target));
+                    } else {
+                        all_clients[target].send(JSON.stringify({
+                            message: parsedMsg.namak,
+                            from: parsedMsg.sender,
+                        }));
                     };
                 });
-
-                parsedMsg.target.forEach(target => {
-                    all_clients[target].send(JSON.stringify({
-                        message: parsedMsg.namak,
-                        from: parsedMsg.sender,
-                    }));
-                });
-
-                // if (parsedMsg.target in all_clients === false) {
-                //     throw new TargetLoginError();
-                // };
-
-                // let targetClient = all_clients[parsedMsg.target];
-                // targetClient.send(JSON.stringify({
-                //     message: parsedMsg.namak,
-                //     from: parsedMsg.sender,
-                // }));
             };
         } catch (err) {
             console.log(JSON.stringify({ error: err.message }));
