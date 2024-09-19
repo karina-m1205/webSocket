@@ -1,6 +1,6 @@
 const webSocket = require("ws");
 const { LoginError, IsJson, EmptyMessage, TargetLoginError, UsernameValidationError } = require("./core/customError.js");
-const isJsonString = require("./core/validators.js");
+const isValidJson = require("./core/validators.js");
 
 //create server socket
 const server = new webSocket.Server({ port: 4000 });
@@ -12,7 +12,7 @@ server.on("connection", (client) => {
 
     client.on("message", (msg) => {
         try {
-            if (!isJsonString(msg)) {
+            if (!isValidJson(msg)) {
                 throw new IsJson();
             };
             let parsedMsg = JSON.parse(msg.toString());

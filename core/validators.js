@@ -1,10 +1,10 @@
-function isJsonString(msg) {
+function isValidJson(msg) {
     try {
         JSON.parse(msg);
+        return true;
     } catch (err) {
         return false;
     };
-    return true;
 };
 
-module.exports = isJsonString;
+module.exports = isValidJson;
